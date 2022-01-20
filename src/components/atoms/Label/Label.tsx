@@ -14,13 +14,13 @@ const LabelInfo = styled.div`
 `;
 
 interface LabelProps {
-  inputChild: React.ReactNode;
+  children: React.ReactNode;
   title: string;
   letterLimit?: number;
   currentLetter?: number;
 }
 
-const Label = ({ inputChild, title, letterLimit, currentLetter }: LabelProps) => {
+const Label = ({ children, title, letterLimit, currentLetter }: LabelProps) => {
   return (
     <LabelBlock>
       <LabelInfo>
@@ -31,7 +31,7 @@ const Label = ({ inputChild, title, letterLimit, currentLetter }: LabelProps) =>
           </div>
         )}
       </LabelInfo>
-      {inputChild}
+      {children}
     </LabelBlock>
   );
 };
