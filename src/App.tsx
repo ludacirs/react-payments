@@ -1,12 +1,7 @@
-import React from 'react';
-import Test from "@atoms/Test";
+import React from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <Test/>
-    </div>
-  );
+  return <div className="App"></div>;
 }
 
 export default App;
