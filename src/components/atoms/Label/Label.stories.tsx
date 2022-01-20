@@ -28,5 +28,5 @@ CountLabel.args = {
   children: <input style={{ width: `200px` }} />,
   title: "Title",
   letterLimit: 30,
-  currentLetter: 0,
+  letterCount: 0,
 };
