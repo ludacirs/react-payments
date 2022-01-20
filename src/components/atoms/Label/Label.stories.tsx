@@ -20,13 +20,13 @@ const Template: ComponentStory<typeof Label> = (args) => <Label {...args} />;
 export const DefaultLabel = Template.bind({});
 DefaultLabel.args = {
   children: <input style={{ width: `200px` }} />,
-  title: "Title",
+  label: "Title",
 };
 
 export const CountLabel = Template.bind({});
 CountLabel.args = {
   children: <input style={{ width: `200px` }} />,
-  title: "Title",
+  label: "Title",
   letterLimit: 30,
   letterCount: 0,
 };

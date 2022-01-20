@@ -1,8 +1,8 @@
 import React, { FormEvent, useState } from "react";
 import styled from "styled-components";
 
-const InputBlock = styled.input`
-  background-color: #ecebf1;
+const InputBlock = styled.input<Pick<InputProps, "backgroundColor">>`
+  background-color: ${({ backgroundColor }) => (backgroundColor ? backgroundColor : `#ecebf1`)};
   height: 45px;
   width: 100%;
   text-align: center;
@@ -18,10 +18,13 @@ interface InputProps {
   type: "number" | "text" | "password";
   letterLimit: number;
   placeHolder?: string;
+  initValue?: string;
+  backgroundColor?: string;
+  readOnly?: boolean;
 }
 
-const Input = ({ type, letterLimit, placeHolder }: InputProps) => {
-  const [value, setValue] = useState("");
+const Input = ({ type, letterLimit, placeHolder, initValue = "", backgroundColor, readOnly = false }: InputProps) => {
+  const [value, setValue] = useState(initValue);
 
   const handleInput = (e: FormEvent<HTMLInputElement>) => {
     const nextValue = e.currentTarget.value;
@@ -38,7 +41,15 @@ const Input = ({ type, letterLimit, placeHolder }: InputProps) => {
   };
 
   return (
-    <InputBlock type={type} placeholder={placeHolder} maxLength={letterLimit} onInput={handleInput} value={value} />
+    <InputBlock
+      readOnly={readOnly}
+      backgroundColor={backgroundColor}
+      type={type}
+      placeholder={placeHolder}
+      maxLength={letterLimit}
+      onInput={handleInput}
+      value={value}
+    />
   );
 };
 

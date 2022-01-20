@@ -2,10 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { flexBox } from "@styles/mixin";
 
-const LabelBlock = styled.label``;
+const LabelBlock = styled.label<Pick<LabelProps, "width">>`
+  width: ${({ width }) => width}px;
+`;
 const LabelInfo = styled.div`
   ${flexBox("space-between", "center")};
-  width: 100%;
+  width: inherit;
   > * {
     margin-bottom: 4px;
     font-size: 12px;
@@ -15,18 +17,19 @@ const LabelInfo = styled.div`
   }
 `;
 
-interface LabelProps {
+export interface LabelProps {
   children: React.ReactNode;
-  title: string;
+  label: string;
   letterLimit?: number;
   letterCount?: number;
+  width: number;
 }
 
-const Label = ({ children, title, letterLimit, letterCount }: LabelProps) => {
+const Label = ({ children, label, letterLimit, letterCount = 0, width }: LabelProps) => {
   return (
-    <LabelBlock>
+    <LabelBlock width={width}>
       <LabelInfo>
-        <div className="title">{title}</div>
+        <div className="label">{label}</div>
         {letterLimit && (
           <div className="count">
             {letterCount}/{letterLimit}
