@@ -26,9 +26,14 @@ const Input = ({ type, letterLimit, placeHolder }: InputProps) => {
   const handleInput = (e: FormEvent<HTMLInputElement>) => {
     const nextValue = e.currentTarget.value;
 
+    if (type === "password" && isChar(nextValue)) {
+      return;
+    }
+
     if (nextValue.length > letterLimit) {
       return;
     }
+
     setValue(nextValue);
   };
 
@@ -38,3 +43,5 @@ const Input = ({ type, letterLimit, placeHolder }: InputProps) => {
 };
 
 export default Input;
+
+const isChar = (value: string) => value.charCodeAt(value.length - 1) < 47 || value.charCodeAt(value.length - 1) > 58;
