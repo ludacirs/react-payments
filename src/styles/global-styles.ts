@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
-import reset from 'styled-reset';
+import { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
 
 const GlobalStyles = createGlobalStyle`
     ${reset};
@@ -9,7 +9,6 @@ const GlobalStyles = createGlobalStyle`
     }
     html, body, #__next{
       height: 100%;
-      background: #F2F2F2;
     }
     a {
       text-decoration: none; 
@@ -25,6 +24,11 @@ const GlobalStyles = createGlobalStyle`
       list-style: none;
       margin: 0; 
       padding: 0;
+    }
+    input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button { 
+      -webkit-appearance: none; 
+      -moz-appearance: none; 
+      appearance: none; 
     }
 `;
 
