@@ -27,8 +27,14 @@ const Input = ({ type, letterLimit, placeHolder, initValue = "", backgroundColor
   const [value, setValue] = useState(initValue);
 
   const handleInput = (e: FormEvent<HTMLInputElement>) => {
-    const nextValue = e.currentTarget.value;
+    const targetElement = e.target as HTMLInputElement;
+    const nextValue = targetElement.value;
 
+    if (nextValue.length === letterLimit) {
+      const form = targetElement.form as HTMLFormElement;
+      const nextInput = form.elements[[...form].indexOf(targetElement) + 1] as HTMLInputElement;
+      nextInput.focus();
+    }
     if (type === "password" && isChar(nextValue)) {
       return;
     }
