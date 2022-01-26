@@ -45,9 +45,19 @@ const CardBlock = styled.div`
     height: 100%;
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    .card-bottom-number {
+    }
+    .card-bottom-info {
+      width: 100%;
+      margin-bottom: 5px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
 `;
 
@@ -56,9 +66,10 @@ interface CardProps {
   name: string;
   month: string;
   year: string;
+  numbers: string[];
 }
 
-const Card = ({ brand, name, month, year }: CardProps) => {
+const Card = ({ brand, name, month, year, numbers }: CardProps) => {
   return (
     <CardBlock>
       <div className="card-top">{brand}</div>
@@ -66,9 +77,12 @@ const Card = ({ brand, name, month, year }: CardProps) => {
         <div className="chip" />
       </div>
       <div className="card-bottom">
-        <div className="name">{name}</div>
-        <div className="date">
-          {month}/{year}
+        <div className={"card-bottom-number"}>{numbers.join(" - ")}</div>
+        <div className={"card-bottom-info"}>
+          <div className="name">{name}</div>
+          <div className="date">
+            {month}/{year}
+          </div>
         </div>
       </div>
     </CardBlock>

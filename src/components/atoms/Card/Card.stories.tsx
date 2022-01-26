@@ -16,4 +16,5 @@ Default.args = {
   month: "4",
   year: "95",
   brand: "shinhan",
+  numbers: ["123", "123"],
 };
