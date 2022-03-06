@@ -48,8 +48,6 @@ const CardBlock = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    .card-bottom-number {
-    }
     .card-bottom-info {
       width: 100%;
       margin-bottom: 5px;
@@ -69,6 +67,21 @@ interface CardProps {
   numbers: string[];
 }
 
+const CardNumber = ({ numbers }: { numbers: string[] }) => {
+  const [first, second, third, fourth] = numbers;
+  return (
+    <div>
+      <span>{first}</span>
+      {first.length === 4 ? " - " : ""}
+      <span>{second}</span>
+      {second.length === 4 ? " - " : ""}
+      <span>{third}</span>
+      {third.length === 4 ? " - " : ""}
+      <span>{fourth}</span>
+    </div>
+  );
+};
+
 const Card = ({ brand, name, month, year, numbers }: CardProps) => {
   return (
     <CardBlock>
@@ -77,7 +90,7 @@ const Card = ({ brand, name, month, year, numbers }: CardProps) => {
         <div className="chip" />
       </div>
       <div className="card-bottom">
-        <div className={"card-bottom-number"}>{numbers.join(" - ")}</div>
+        <CardNumber numbers={numbers} />
         <div className={"card-bottom-info"}>
           <div className="name">{name}</div>
           <div className="date">

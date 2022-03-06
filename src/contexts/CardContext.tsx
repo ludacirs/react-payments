@@ -9,7 +9,7 @@ interface CardState {
 }
 
 export interface CardAction {
-  type: string;
+  type: "CHANGE_NUMBERS" | "CHANGE_MONTH" | "CHANGE_YEAR" | "CHANGE_NAME" | "CHANGE_PASSWORD";
   payload: any;
 }
 
@@ -18,13 +18,28 @@ const initialState: CardState = {
   brand: "",
   month: "",
   year: "",
-  numbers: [],
+  numbers: ["", "", "", ""],
 };
 
 const reducer = (state: CardState, { type, payload }: CardAction) => {
   switch (type) {
-    case "": {
-      return { ...state };
+    case "CHANGE_NUMBERS": {
+      const { index, number } = payload;
+      const nextNumbers = [...state.numbers];
+      nextNumbers[index] = number;
+      return { ...state, numbers: nextNumbers };
+    }
+    case "CHANGE_MONTH": {
+      const { month } = payload;
+      return { ...state, month };
+    }
+    case "CHANGE_YEAR": {
+      const { year } = payload;
+      return { ...state, year };
+    }
+    case "CHANGE_NAME": {
+      const { name } = payload;
+      return { ...state, name };
     }
     default: {
       return state;
@@ -48,7 +63,7 @@ export const CardProvider = ({ children }: { children: React.ReactNode }) => {
 export const useCardState = () => {
   const state = useContext(CardStateContext);
   if (!state) {
-    throw new Error("scroll state context error");
+    throw new Error("card state context error");
   }
   return state;
 };
@@ -56,7 +71,7 @@ export const useCardState = () => {
 export const useCardDispatch = () => {
   const dispatch = useContext(CardDispatchContext);
   if (!dispatch) {
-    throw new Error("scroll dispatch context error");
+    throw new Error("card dispatch context error");
   }
   return dispatch;
 };
