@@ -8,8 +8,8 @@ module.exports = {
     config.resolve.alias = {
       ...config.resolve.alias,
       "@styles": path.resolve(__dirname, "../src/styles/"),
-      "@atoms": path.resolve(__dirname, "../src/components/atoms/"),
-      "@molecules": path.resolve(__dirname, "../src/components/molecules/"),
+      "@components": path.resolve(__dirname, "../src/components/"),
+      "@contexts": path.resolve(__dirname, "../src/contexts/"),
     };
     return config;
   },

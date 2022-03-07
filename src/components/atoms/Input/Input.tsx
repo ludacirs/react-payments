@@ -14,8 +14,6 @@ const InputBlock = styled.input<Pick<InputProps, "backgroundColor">>`
   font-size: 18px;
 `;
 
-export type setValue = (value: string | number) => void;
-
 interface InputProps {
   type: "number" | "text" | "password";
   letterLimit: number;
