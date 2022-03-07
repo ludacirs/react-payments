@@ -1,7 +1,7 @@
 import React from "react";
 import InputContainer from "@molecules/InputContainer/InputContainer";
-import Input, { setValue } from "@atoms/Input/Input";
-import { useCardDispatch, useCardState } from "../../../contexts/CardContext";
+import { Input } from "@components/atoms/";
+import { useCardDispatch, useCardState } from "@contexts/CardContext";
 
 interface DateInputProps {}
 
